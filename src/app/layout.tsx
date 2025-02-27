@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Kalam, Comic_Neue } from 'next/font/google';
 import './globals.css';
 
+import ClientLayout from '@/component/ClientLayout';
+
 const kalam = Kalam({
   variable: '--font-kalam',
   subsets: ['latin'],
@@ -26,16 +28,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="icon" href="/arms-400.png" />
+      <head>
+        <link rel="icon" href="/arms-400.png" />
+      </head>
       <body
         className={`
           ${kalam.variable}
           ${comicNeue.variable}
           antialiased
-          font-system
+          font-kalam
+          text-3xl
         `}
       >
-        {children}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
