@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 
 import { useAppContext } from '@/context/AppContext';
+import Footer from '@/component/primitive/Footer';
 
 export default function PublishScreen() {
 
@@ -11,10 +12,9 @@ export default function PublishScreen() {
   return (
     <div className={clsx(
       'flex flex-col gap-8'
-    )}
-      onClick={() => setScreenIndex(6)}
-    >
+    )}>
       <input type='text' placeholder='Screen 6' />
+      <Footer />
     </div>
   );
 }

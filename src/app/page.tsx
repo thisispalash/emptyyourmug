@@ -24,13 +24,4 @@ export default function Home() {
     case 6: return <ReliefScreen />;
     default: return <LandingScreen />;
   }
-
-  // return (
-  //   <main className={clsx(
-  //     'w-full h-screen p-8',
-  //     'flex flex-col items-center justify-center gap-8'
-  //   )}>
-
-  //   </main>
-  // );
 }
