@@ -2,20 +2,49 @@
 
 import { createContext, useContext, useState } from 'react';
 
+import EmotionColors from '@/lib/colors.json';
+import { BaseEmotion, Emotion } from '@/lib/types';
+
 interface AppContextType {
   screenIndex: number;
   setScreenIndex: (index: number) => void;
+
+  baseEmotion: BaseEmotion | '';
+  setBaseEmotion: (emotion: BaseEmotion | '') => void;
+  getEmotionColor: (emotion: Emotion) => string;
+  getBackgroundColor: () => string;
 }
+
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export default function AppProvider({ children }: { children: React.ReactNode }) {
+  
   const [ screenIndex, setScreenIndex ] = useState(0);
+  const [ baseEmotion, setBaseEmotion ] = useState<BaseEmotion | ''>('');
+  
+  
+  function getEmotionColor(emotion: Emotion) {
+    return EmotionColors[emotion as keyof typeof EmotionColors];
+  }
+
+  function getBackgroundColor() {
+    if (!baseEmotion) return 'var(--background)';
+    
+    const color = EmotionColors[baseEmotion as keyof typeof EmotionColors];
+    
+    // Convert hsl color to hsla with 0.1 opacity
+    return color.replace('hsl', 'hsla').replace(')', ', 0.1)');
+  }
+
 
   return (
     <AppContext.Provider value={{ 
-      screenIndex, 
-      setScreenIndex 
+      screenIndex, setScreenIndex,
+      baseEmotion, setBaseEmotion,
+
+      getEmotionColor,
+      getBackgroundColor,
     }}>
       {children}
     </AppContext.Provider>

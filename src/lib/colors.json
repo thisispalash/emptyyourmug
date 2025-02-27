@@ -1,0 +1,49 @@
+{
+  "rage": "hsl(0, 73%, 50%)",
+  "anger": "hsl(0, 50%, 50%)",
+  "annoyance": "hsl(0, 37%, 50%)",
+  
+  "aggressiveness": "hsl(10, 50%, 50%)",
+
+  "vigilance": "hsl(20, 73%, 50%)",
+  "anticipation": "hsl(20, 50%, 50%)",
+  "interest": "hsl(20, 37%, 50%)",
+  
+  "optimism": "hsl(30, 50%, 50%)",
+  
+  "ecstacy": "hsl(40, 73%, 50%)",
+  "joy": "hsl(40, 50%, 50%)",
+  "serenity": "hsl(40, 37%, 50%)",
+  
+  "love": "hsl(50, 50%, 50%)",
+  
+  "admiration": "hsl(60, 73%, 50%)",
+  "trust": "hsl(60, 50%, 50%)",
+  "acceptance": "hsl(60, 37%, 50%)",
+  
+  "submission": "hsl(70, 50%, 50%)",
+  
+  "terror": "hsl(80, 73%, 50%)",
+  "fear": "hsl(80, 50%, 50%)",
+  "apprehension": "hsl(80, 37%, 50%)",
+  
+  "awe": "hsl(90, 50%, 50%)",
+  
+  "amazement": "hsl(100, 73%, 50%)",
+  "surprise": "hsl(100, 50%, 50%)",
+  "distraction": "hsl(100, 37%, 50%)",
+  
+  "disapproval": "hsl(155, 50%, 50%)",
+  
+  "grief": "hsl(220, 73%, 50%)",
+  "sadness": "hsl(220, 50%, 50%)",
+  "pensiveness": "hsl(220, 37%, 50%)",
+  
+  "remorse": "hsl(255, 50%, 50%)",
+ 
+  "loathing": "hsl(290, 73%, 50%)",
+  "disgust": "hsl(290, 50%, 50%)",
+  "boredom": "hsl(290, 37%, 50%)",
+  
+  "contempt": "hsl(325, 50%, 50%)"
+}
