@@ -31,8 +31,16 @@ interface AppContextType {
 
   prompt: string;
   setPrompt: (prompt: string) => void;
-}
 
+  story: string;  
+  setStory: (story: string) => void;
+
+  title: string;
+  setTitle: (title: string) => void;
+
+  author: string;
+  setAuthor: (author: string) => void;
+}
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -41,6 +49,10 @@ export default function AppProvider({ children }: { children: React.ReactNode })
   const [ screenIndex, setScreenIndex ] = useState(0);
   const [ baseEmotion, setBaseEmotion ] = useState<BaseEmotion | ''>('');
   const [ prompt, setPrompt ] = useState('');
+  
+  const [ story, setStory ] = useState('');
+  const [ title, setTitle ] = useState('');
+  const [ author, setAuthor ] = useState('');
   
   function getEmotionColor(emotion: Emotion) {
     return EmotionColors[emotion as keyof typeof EmotionColors];
@@ -117,7 +129,7 @@ export default function AppProvider({ children }: { children: React.ReactNode })
         lowEmotion = 'boredom';
         break;
       default:
-        return { left: '', stack: [], right: '' };
+        return { left: { text: '', color: '' }, stack: [], right: { text: '', color: '' } };
     }
 
     const leftPrompt = getPrompt(leftEmotion);
@@ -142,8 +154,12 @@ export default function AppProvider({ children }: { children: React.ReactNode })
   return (
     <AppContext.Provider value={{ 
       screenIndex, setScreenIndex,
+      
       baseEmotion, setBaseEmotion,
       prompt, setPrompt,
+      story, setStory,
+      title, setTitle,
+      author, setAuthor,
       
       getEmoji,
       getEmotionColor,
