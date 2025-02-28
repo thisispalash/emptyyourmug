@@ -25,7 +25,7 @@ export default function PromptScreen() {
         <div className={clsx(
           'flex w-full justify-start text-left'
         )}>
-          <Prompt text={left.text} color={left.color} />
+          <Prompt text={left.text} color={left.color} emotion={left.emotion} />
         </div>
 
         <div className={clsx(
@@ -36,7 +36,7 @@ export default function PromptScreen() {
             <div key={index} className={clsx(
               'flex w-full text-center'
             )}>
-              <Prompt text={item.text} color={item.color} />
+              <Prompt text={item.text} color={item.color} emotion={item.emotion} />
             </div>
           ))}
         </div>
@@ -44,7 +44,7 @@ export default function PromptScreen() {
         <div className={clsx(
           'flex w-full justify-end text-right'
         )}>
-          <Prompt text={right.text} color={right.color} />
+          <Prompt text={right.text} color={right.color} emotion={right.emotion} />
         </div>
 
       </div>
@@ -63,7 +63,7 @@ export default function PromptScreen() {
             'flex items-center justify-center',
             'h-full'
           )}>
-            <Prompt text={left.text} color={left.color} />
+            <Prompt text={left.text} color={left.color} emotion={left.emotion} />
           </div>
           
           <div className={clsx(
@@ -75,7 +75,7 @@ export default function PromptScreen() {
                 'flex items-center justify-center',
                 'h-1/3'
               )}>
-                <Prompt text={item.text} color={item.color} />
+                <Prompt text={item.text} color={item.color} emotion={item.emotion} />
               </div>
             ))}
           </div>
@@ -84,7 +84,7 @@ export default function PromptScreen() {
             'flex items-center justify-center',
             'h-full'
           )}>
-            <Prompt text={right.text} color={right.color} />
+            <Prompt text={right.text} color={right.color} emotion={right.emotion} />
           </div>
         </div>
       </div>

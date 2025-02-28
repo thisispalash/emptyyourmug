@@ -12,6 +12,7 @@ import { BaseEmotion, Emotion, IndependentEmotion, MixedEmotion } from '@/lib/ty
 type Prompt = {
   text: string;
   color: string;
+  emotion: Emotion | '';
 }
 
 interface AppContextType {
@@ -32,6 +33,9 @@ interface AppContextType {
   prompt: string;
   setPrompt: (prompt: string) => void;
 
+  selectedEmotion: string;
+  setSelectedEmotion: (selectedEmotion: Emotion) => void;
+
   story: string;  
   setStory: (story: string) => void;
 
@@ -40,6 +44,8 @@ interface AppContextType {
 
   author: string;
   setAuthor: (author: string) => void;
+
+  resetAll: () => void;
 }
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -49,10 +55,19 @@ export default function AppProvider({ children }: { children: React.ReactNode })
   const [ screenIndex, setScreenIndex ] = useState(0);
   const [ baseEmotion, setBaseEmotion ] = useState<BaseEmotion | ''>('');
   const [ prompt, setPrompt ] = useState('');
+  const [ selectedEmotion, setSelectedEmotion ] = useState<Emotion | ''>('');
   
   const [ story, setStory ] = useState('');
   const [ title, setTitle ] = useState('');
   const [ author, setAuthor ] = useState('');
+
+  function resetAll() {
+    setPrompt('');
+    setSelectedEmotion('');
+    setStory('');
+    setTitle('');
+    setAuthor('');
+  }
   
   function getEmotionColor(emotion: Emotion) {
     return EmotionColors[emotion as keyof typeof EmotionColors];
@@ -129,7 +144,7 @@ export default function AppProvider({ children }: { children: React.ReactNode })
         lowEmotion = 'boredom';
         break;
       default:
-        return { left: { text: '', color: '' }, stack: [], right: { text: '', color: '' } };
+        return { left: { text: '', color: '', emotion: '' as Emotion }, stack: [], right: { text: '', color: '', emotion: '' as Emotion } };
     }
 
     const leftPrompt = getPrompt(leftEmotion);
@@ -140,13 +155,13 @@ export default function AppProvider({ children }: { children: React.ReactNode })
 
 
     return {
-      left: { text: leftPrompt, color: getEmotionColor(leftEmotion) },
+      left: { text: leftPrompt, color: getEmotionColor(leftEmotion), emotion: leftEmotion as Emotion },
       stack: [
-        { text: lowPrompt, color: getEmotionColor(lowEmotion) },
-        { text: basePrompt, color: getEmotionColor(baseEmotion) },
-        { text: highPrompt, color: getEmotionColor(highEmotion) },
+        { text: lowPrompt, color: getEmotionColor(lowEmotion), emotion: lowEmotion as Emotion },
+        { text: basePrompt, color: getEmotionColor(baseEmotion), emotion: baseEmotion as Emotion },
+        { text: highPrompt, color: getEmotionColor(highEmotion), emotion: highEmotion as Emotion },
       ],
-      right: { text: rightPrompt, color: getEmotionColor(rightEmotion) },
+      right: { text: rightPrompt, color: getEmotionColor(rightEmotion), emotion: rightEmotion as Emotion },
     };
   }
 
@@ -160,6 +175,7 @@ export default function AppProvider({ children }: { children: React.ReactNode })
       story, setStory,
       title, setTitle,
       author, setAuthor,
+      selectedEmotion, setSelectedEmotion,
       
       getEmoji,
       getEmotionColor,
@@ -167,6 +183,8 @@ export default function AppProvider({ children }: { children: React.ReactNode })
 
       getPrompt,
       getPromptGrid,
+
+      resetAll,
     }}>
       {children}
     </AppContext.Provider>
