@@ -19,13 +19,13 @@ export default function IdentityScreen() {
       'items-center justify-center'
     )}>
       
-      <span className='text-2xl lowercase'>
+      <span className='text-lg md:text-2xl text-center lowercase'>
         what should we call the author?
       </span>
       <div className='w-full flex flex-col gap-1 items-center'>
         <BaseName />
         <Link href='#'>
-          <span className='text-base'>
+          <span className='text-sm md:text-base'>
             published before?
           </span>
         </Link>
