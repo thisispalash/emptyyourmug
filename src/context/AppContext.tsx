@@ -3,6 +3,9 @@
 import { createContext, useContext, useState } from 'react';
 
 import EmotionColors from '@/lib/colors.json';
+import EmojiMap from '@/lib/emoji.json';
+
+
 import { BaseEmotion, Emotion } from '@/lib/types';
 
 interface AppContextType {
@@ -11,8 +14,11 @@ interface AppContextType {
 
   baseEmotion: BaseEmotion | '';
   setBaseEmotion: (emotion: BaseEmotion | '') => void;
-  getEmotionColor: (emotion: Emotion) => string;
+
   getBackgroundColor: () => string;
+
+  getEmoji: (emotion: Emotion) => string;
+  getEmotionColor: (emotion: Emotion) => string;
 }
 
 
@@ -26,6 +32,10 @@ export default function AppProvider({ children }: { children: React.ReactNode })
   
   function getEmotionColor(emotion: Emotion) {
     return EmotionColors[emotion as keyof typeof EmotionColors];
+  }
+
+  function getEmoji(emotion: Emotion) {
+    return EmojiMap[emotion as keyof typeof EmojiMap];
   }
 
   function getBackgroundColor() {
@@ -43,6 +53,7 @@ export default function AppProvider({ children }: { children: React.ReactNode })
       screenIndex, setScreenIndex,
       baseEmotion, setBaseEmotion,
 
+      getEmoji,
       getEmotionColor,
       getBackgroundColor,
     }}>

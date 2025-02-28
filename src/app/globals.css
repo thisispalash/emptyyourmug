@@ -23,6 +23,10 @@ body {
 }
 
 @theme {
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
   --font-kalam: var(--font-kalam);
   --font-comic-neue: var(--font-comic-neue);
 }

@@ -3,7 +3,6 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 
-
 import { BaseEmotion } from '@/lib/types';
 import { useAppContext } from '@/context/AppContext';
 
@@ -15,7 +14,7 @@ export default function EmotionBox({ emotion }: EmotionBoxProps) {
 
   const [ isHovered, setIsHovered ] = useState(false);
 
-  const { getEmotionColor, setBaseEmotion, setScreenIndex } = useAppContext();
+  const { getEmotionColor, setBaseEmotion, setScreenIndex, getEmoji } = useAppContext();
 
   const handleClick= () => {
     setBaseEmotion(emotion);
@@ -35,13 +34,17 @@ export default function EmotionBox({ emotion }: EmotionBoxProps) {
       style={{ backgroundColor: getEmotionColor(emotion) }}
       className={clsx(
         'p-2 h-24 w-24 rounded-md cursor-pointer',
+        'flex items-center justify-center',
         'hover:scale-110 transition-all duration-300 ease-in-out'
       )}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      &nbsp;
+      {isHovered ? 
+        <span className='text-2xl text-background/50'>{getEmoji(emotion)}</span> 
+        : <span>&nbsp;</span>
+      }
     </div>
   );
 }
