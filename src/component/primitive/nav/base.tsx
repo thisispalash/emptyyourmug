@@ -7,17 +7,22 @@ import { useAppContext } from '@/context/AppContext';
 import ForwardArrow from './ForwardArrow';
 import BackArrow from './BackArrow';
 
-export default function NavButton({ dir }: { dir: 'f' | 'b'}) {
+interface NavButtonProps {
+  dir: 'f' | 'b';
+  onClick?: () => void;
+}
+
+export default function NavButton({ dir, onClick }: NavButtonProps) {
 
   const { screenIndex, setScreenIndex } = useAppContext();
 
   const handleClick = () => {
-    console.log('clicked');
     if (dir === 'f') {
       setScreenIndex((screenIndex + 1) % 7);
     } else {
       setScreenIndex((screenIndex - 1 + 7) % 7);
     }
+    onClick?.();
   }
 
   return (
