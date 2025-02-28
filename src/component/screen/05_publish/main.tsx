@@ -24,10 +24,10 @@ export default function PublishScreen() {
       'items-center justify-center'
     )}>
       <div className='flex flex-col gap-2 items-center'>
-        <span className='text-2xl lowercase'>
+        <span className='text-lg md:text-2xl lowercase'>
           {message}
         </span>
-        <span className='text-2xl lowercase'>
+        <span className='text-lg md:text-2xl lowercase'>
           pour the mug?
         </span>
       </div>
