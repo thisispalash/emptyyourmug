@@ -14,44 +14,84 @@ export default function PromptScreen() {
   const { left, stack, right } = getPromptGrid();
 
   return (
-    <div className={clsx(
-      'h-full w-full py-16',
-      'flex flex-col gap-8',
-      'text-foreground/80'
-    )}>
+    <>
+      {/* Mobile */}
       <div className={clsx(
-        'grid grid-cols-3 gap-8',
-        'flex-grow'
+        'h-full w-full px-2 py-6',
+        'flex flex-col gap-12 items-center justify-center',
+        'md:hidden'
       )}>
+
         <div className={clsx(
-          'flex items-center justify-center',
-          'h-full'
+          'flex w-full justify-start text-left'
         )}>
-          <Prompt text={left.text} color={left.color} />
+          <Prompt text={left.text} color={left.color} emotion={left.emotion} />
         </div>
-        
+
         <div className={clsx(
-          'flex flex-col',
-          'h-full'
+          'flex flex-col gap-6',
+          'items-center justify-center'
         )}>
           {stack.map((item, index) => (
             <div key={index} className={clsx(
-              'flex items-center justify-center',
-              'h-1/3'
+              'flex w-full text-center'
             )}>
-              <Prompt text={item.text} color={item.color} />
+              <Prompt text={item.text} color={item.color} emotion={item.emotion} />
             </div>
           ))}
         </div>
-        
+
         <div className={clsx(
-          'flex items-center justify-center',
-          'h-full'
+          'flex w-full justify-end text-right'
         )}>
-          <Prompt text={right.text} color={right.color} />
+          <Prompt text={right.text} color={right.color} emotion={right.emotion} />
+        </div>
+
+      </div>
+
+
+      <div className={clsx(
+        'h-full w-full py-16',
+        'hidden md:flex flex-col gap-8',
+        'text-foreground/80'
+      )}>
+        <div className={clsx(
+          'grid grid-cols-3 gap-8',
+          'flex-grow'
+        )}>
+          <div className={clsx(
+            'flex items-center justify-center',
+            'h-full'
+          )}>
+            <Prompt text={left.text} color={left.color} emotion={left.emotion} />
+          </div>
+          
+          <div className={clsx(
+            'flex flex-col',
+            'h-full'
+          )}>
+            {stack.map((item, index) => (
+              <div key={index} className={clsx(
+                'flex items-center justify-center',
+                'h-1/3'
+              )}>
+                <Prompt text={item.text} color={item.color} emotion={item.emotion} />
+              </div>
+            ))}
+          </div>
+          
+          <div className={clsx(
+            'flex items-center justify-center',
+            'h-full'
+          )}>
+            <Prompt text={right.text} color={right.color} emotion={right.emotion} />
+          </div>
         </div>
       </div>
+
       <Footer dir='b' onBack={() => setBaseEmotion('')} />
-    </div>
+    </>
+
+
   );
 }

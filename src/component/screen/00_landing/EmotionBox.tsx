@@ -41,10 +41,13 @@ export default function EmotionBox({ emotion }: EmotionBoxProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {isHovered ? 
-        <span className='text-2xl text-background/50'>{getEmoji(emotion)}</span> 
-        : <span>&nbsp;</span>
-      }
+      <div className='hidden md:flex items-center justify-center'>
+        {isHovered ? 
+          <span className='text-2xl text-background/50'>{getEmoji(emotion)}</span> 
+          : <span>&nbsp;</span>
+        }
+      </div>
+      <span className='text-xl text-background/50 md:hidden'>{getEmoji(emotion)}</span>
     </div>
   );
 }

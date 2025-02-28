@@ -1,6 +1,9 @@
 'use client';
 
 import clsx from 'clsx';
+import { useEffect } from 'react';
+
+import { BaseEmotion, Emotion } from '@/lib/types';
 
 import AppProvider, { useAppContext } from '@/context/AppContext';
 
@@ -16,6 +19,27 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 function ClientLayoutContent({ children }: { children: React.ReactNode }) {
 
   const { getBackgroundColor } = useAppContext();
+  const { setScreenIndex, setBaseEmotion, setPrompt, setSelectedEmotion, setStory, setTitle, setAuthor } = useAppContext();
+
+  useEffect(() => {
+    
+    const screenIndex = localStorage.getItem('screenIndex');
+    const baseEmotion = localStorage.getItem('baseEmotion');
+    const prompt = localStorage.getItem('prompt');
+    const selectedEmotion = localStorage.getItem('selectedEmotion');
+    const story = localStorage.getItem('story');
+    const title = localStorage.getItem('title');
+    const author = localStorage.getItem('author');
+
+    if (screenIndex) { setScreenIndex(parseInt(screenIndex)); }
+    if (baseEmotion) { setBaseEmotion(baseEmotion as BaseEmotion); }
+    if (prompt) { setPrompt(prompt); }
+    if (selectedEmotion) { setSelectedEmotion(selectedEmotion as Emotion); }
+    if (story) { setStory(story); }
+    if (title) { setTitle(title); }
+    if (author) { setAuthor(author); }
+
+  }, []);
 
   return (
     <main 
