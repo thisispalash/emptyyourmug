@@ -28,6 +28,9 @@ interface AppContextType {
 
   getPrompt: (emotion: Emotion) => string;
   getPromptGrid: () => { left: Prompt, stack: Prompt[], right: Prompt };
+
+  prompt: string;
+  setPrompt: (prompt: string) => void;
 }
 
 
@@ -37,7 +40,7 @@ export default function AppProvider({ children }: { children: React.ReactNode })
   
   const [ screenIndex, setScreenIndex ] = useState(0);
   const [ baseEmotion, setBaseEmotion ] = useState<BaseEmotion | ''>('');
-  
+  const [ prompt, setPrompt ] = useState('');
   
   function getEmotionColor(emotion: Emotion) {
     return EmotionColors[emotion as keyof typeof EmotionColors];
@@ -140,7 +143,8 @@ export default function AppProvider({ children }: { children: React.ReactNode })
     <AppContext.Provider value={{ 
       screenIndex, setScreenIndex,
       baseEmotion, setBaseEmotion,
-
+      prompt, setPrompt,
+      
       getEmoji,
       getEmotionColor,
       getBackgroundColor,

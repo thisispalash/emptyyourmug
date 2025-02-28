@@ -14,7 +14,12 @@ export default function Prompt({ text, color }: PromptProps) {
   
   const [isHovered, setIsHovered] = useState(false);
 
-  const { setScreenIndex } = useAppContext();
+  const { setScreenIndex, setPrompt } = useAppContext();
+
+  const handleClick = () => {
+    setPrompt(text);
+    setScreenIndex(2);
+  }
   
   return (
     <p 
@@ -26,7 +31,7 @@ export default function Prompt({ text, color }: PromptProps) {
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setScreenIndex(2)}
+      onClick={handleClick}
     >
       {text}
     </p>
