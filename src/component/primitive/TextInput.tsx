@@ -45,9 +45,9 @@ export default function TextInput({ value, onChange, className }: TextInputProps
         borderColor: getEmotionColor(baseEmotion as Emotion),
       } as React.CSSProperties}
       className={clsx(
-        'w-3/5 h-auto px-4 py-3',
-        'border-2 rounded-lg',
-        'text-2xl selection:text-[var(--selection-color)]',
+        'w-3/5 h-auto px-3 md:px-4 py-2',
+        'border-1 md:border-2 rounded-lg',
+        'text-lg md:text-2xl selection:text-[var(--selection-color)]',
         'selection:bg-[var(--selection-background-color)]',
         'focus:outline-none focus:ring-0',
         className,

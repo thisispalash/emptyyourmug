@@ -18,7 +18,7 @@ export default function TitleScreen() {
       'items-center justify-center'
     )}>
       
-      <span className='text-2xl lowercase'>
+      <span className='text-lg md:text-2xl text-center lowercase'>
         what would you like to call your story?
       </span>
       <Title />
