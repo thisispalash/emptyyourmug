@@ -22,12 +22,19 @@ function ClientLayoutContent({ children }: { children: React.ReactNode }) {
       style={{ backgroundColor: getBackgroundColor() }}
       className={clsx(
         'w-full h-screen p-8',
-        'flex flex-col items-center justify-center gap-8'
-        // 'transition-opacity duration-1000',
+        'flex flex-col items-center justify-center gap-8',
+        'transition-all duration-500',
         // isLoading ? 'opacity-0' : 'opacity-100',
       )}
     >
-      {children}
+      <div className={clsx(
+        'w-full h-full',
+        'flex flex-col items-center justify-center gap-8',
+        'transition-opacity duration-500',
+        // isLoading ? 'opacity-0' : 'opacity-100',
+      )}>
+        {children}
+      </div>
     </main>
   );
 }
