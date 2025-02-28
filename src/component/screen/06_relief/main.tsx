@@ -3,7 +3,9 @@
 import clsx from 'clsx';
 
 import { useAppContext } from '@/context/AppContext';
-import Footer from '@/component/primitive/Footer';
+
+import Link from '@/component/primitive/Link';
+import RangeInput from '@/component/primitive/RangeInput';
 
 export default function ReliefScreen() {
 
@@ -11,10 +13,25 @@ export default function ReliefScreen() {
 
   return (
     <div className={clsx(
-      'flex flex-col gap-8'
+      'w-full h-full',
+      'flex flex-col gap-8',
+      'items-center justify-center'
     )}>
-      <input type='range' min={0} max={100} />
-      <Footer />
+      <span className='text-2xl lowercase'>Phew! Your mug is not empty!</span>
+
+      <div className='w-full flex flex-col gap-4 items-center'>
+        <span className='text-2xl lowercase'>How relieved do you feel?</span>
+        <RangeInput />
+      </div>
+      
+      <div className='w-full flex flex-row gap-8 items-center justify-center'>
+        <Link href='#' onClick={() => setScreenIndex(0)}>
+          <span className='text-base lowercase'>pour another?</span>
+        </Link>
+        <Link href='#' onClick={() => {}}>
+          <span className='text-base lowercase'>view profile</span>
+        </Link>
+      </div>
     </div>
   );
 }
