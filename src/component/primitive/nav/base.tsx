@@ -1,11 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
+import { useState } from 'react';
+
+import { Emotion } from '@/lib/types';
 
 import { useAppContext } from '@/context/AppContext';
 
 import ForwardArrow from './ForwardArrow';
 import BackArrow from './BackArrow';
+
 
 interface NavButtonProps {
   dir: 'f' | 'b';
@@ -14,7 +18,10 @@ interface NavButtonProps {
 
 export default function NavButton({ dir, onClick }: NavButtonProps) {
 
+  const [isHovered, setIsHovered] = useState(false);
+
   const { screenIndex, setScreenIndex } = useAppContext();
+  const { baseEmotion, getEmotionColor, getBackgroundColor } = useAppContext();
 
   const handleClick = () => {
     if (dir === 'f') {
@@ -27,12 +34,17 @@ export default function NavButton({ dir, onClick }: NavButtonProps) {
 
   return (
     <div 
+      style={{ 
+        backgroundColor: isHovered ? getEmotionColor(baseEmotion as Emotion) : 'transparent',
+        color: isHovered ? 'var(--background)' : getEmotionColor(baseEmotion as Emotion)
+      }}
       className={clsx(
         'cursor-pointer',
-        'text-2xl p-3 rounded-full',
-        'hover:border hover:border-foreground',
+        'text-2xl px-3 py-2 rounded-full',
       )}
       onClick={handleClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {
         {
