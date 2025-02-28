@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 import EmotionColors from '@/lib/colors.json';
 import EmojiMap from '@/lib/emoji.json';
@@ -60,6 +60,14 @@ export default function AppProvider({ children }: { children: React.ReactNode })
   const [ story, setStory ] = useState('');
   const [ title, setTitle ] = useState('');
   const [ author, setAuthor ] = useState('');
+
+  useEffect(() => localStorage.setItem('screenIndex', screenIndex.toString()), [screenIndex]);
+  useEffect(() => localStorage.setItem('baseEmotion', baseEmotion), [baseEmotion]);
+  useEffect(() => localStorage.setItem('prompt', prompt), [prompt]);
+  useEffect(() => localStorage.setItem('selectedEmotion', selectedEmotion), [selectedEmotion]);
+  useEffect(() => localStorage.setItem('story', story), [story]);
+  useEffect(() => localStorage.setItem('title', title), [title]);
+  useEffect(() => localStorage.setItem('author', author), [author]);
 
   function resetAll() {
     setPrompt('');
