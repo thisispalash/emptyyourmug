@@ -14,10 +14,17 @@ export default function Prompt({ text, color }: PromptProps) {
   
   const [isHovered, setIsHovered] = useState(false);
 
-  const { setScreenIndex, setPrompt } = useAppContext();
+  const { setScreenIndex, prompt, setPrompt } = useAppContext();
+  const { setStory, setTitle, setAuthor } = useAppContext();
 
   const handleClick = () => {
-    setPrompt(text);
+    // reset all the other fields on new selection
+    if (text !== prompt) {
+      setPrompt(text);
+      setStory('');
+      setTitle('');
+      setAuthor('');
+    }
     setScreenIndex(2);
   }
   

@@ -12,7 +12,7 @@ export default function Editor() {
   const { prompt, story, setStory } = useAppContext();
   const { baseEmotion, getEmotionColor } = useAppContext();
   
-  const [ content, setContent ] = useState(prompt + ' ');
+  const [ content, setContent ] = useState(story === '' ? prompt + ' ' : story);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {

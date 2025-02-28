@@ -22,7 +22,7 @@ export default function IdentityScreen() {
         what should we call the author?
       </span>
       <BaseName />
-      <Footer dir='fb' onBack={() => setAuthor('')} isForwardDisabled={!author} />
+      <Footer dir='fb' isForwardDisabled={!author} />
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function TitleScreen() {
         what would you like to call your story?
       </span>
       <Title />
-      <Footer dir='fb' onBack={() => setTitle('')} isForwardDisabled={!title} />
+      <Footer dir='fb' isForwardDisabled={!title} />
     </div>
   );
 }

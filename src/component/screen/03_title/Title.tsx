@@ -6,7 +6,7 @@ import TextInput from '@/component/primitive/TextInput';
 
 export default function Title() {
 
-  const { setTitle } = useAppContext();
+  const { title, setTitle } = useAppContext();
 
-  return <TextInput onChange={setTitle} />;
+  return <TextInput value={title} onChange={setTitle} />;
 }
