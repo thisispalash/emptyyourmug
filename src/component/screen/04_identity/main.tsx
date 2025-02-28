@@ -10,7 +10,7 @@ import Footer from '@/component/primitive/Footer';
 
 export default function IdentityScreen() {
 
-  const { setAuthor, author } = useAppContext();
+  const { author } = useAppContext();
 
   return (
     <div className={clsx(

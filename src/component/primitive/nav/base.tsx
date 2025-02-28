@@ -22,7 +22,7 @@ export default function NavButton({ dir, onClick, isDisabled }: NavButtonProps) 
   const [isHovered, setIsHovered] = useState(false);
 
   const { screenIndex, setScreenIndex } = useAppContext();
-  const { baseEmotion, getEmotionColor, getBackgroundColor } = useAppContext();
+  const { baseEmotion, getEmotionColor } = useAppContext();
 
   const handleClick = () => {
     if (isDisabled) return;

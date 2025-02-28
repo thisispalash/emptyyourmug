@@ -9,7 +9,7 @@ import Title from './Title';
 
 export default function TitleScreen() {
 
-  const { setTitle, title } = useAppContext();
+  const { title } = useAppContext();
 
   return (
     <div className={clsx(
