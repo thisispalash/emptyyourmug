@@ -9,7 +9,7 @@ import Footer from '@/component/primitive/Footer';
 
 export default function PromptScreen() {
 
-  const { setPrompt } = useAppContext();
+  const { setPrompt, story } = useAppContext();
 
   return (
     <div className={clsx(
@@ -17,7 +17,7 @@ export default function PromptScreen() {
       'flex flex-col gap-8'
     )}>
       <Editor />
-      <Footer dir='fb' onBack={() => setPrompt('')} />
+      <Footer dir='fb' onBack={() => setPrompt('')} isForwardDisabled={!story} />
     </div>
   );
 }

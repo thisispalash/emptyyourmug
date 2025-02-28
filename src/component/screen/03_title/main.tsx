@@ -9,7 +9,7 @@ import Title from './Title';
 
 export default function TitleScreen() {
 
-  const { setStory } = useAppContext();
+  const { setStory, title } = useAppContext();
 
   return (
     <div className={clsx(
@@ -22,7 +22,7 @@ export default function TitleScreen() {
         what would you like to call your story?
       </span>
       <Title />
-      <Footer dir='fb' onBack={() => setStory('')} />
+      <Footer dir='fb' onBack={() => setStory('')} isForwardDisabled={!title} />
     </div>
   );
 }

@@ -14,9 +14,10 @@ import BackArrow from './BackArrow';
 interface NavButtonProps {
   dir: 'f' | 'b';
   onClick?: () => void;
+  isDisabled?: boolean;
 }
 
-export default function NavButton({ dir, onClick }: NavButtonProps) {
+export default function NavButton({ dir, onClick, isDisabled }: NavButtonProps) {
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -24,6 +25,7 @@ export default function NavButton({ dir, onClick }: NavButtonProps) {
   const { baseEmotion, getEmotionColor, getBackgroundColor } = useAppContext();
 
   const handleClick = () => {
+    if (isDisabled) return;
     if (dir === 'f') {
       setScreenIndex((screenIndex + 1) % 7);
     } else {
@@ -41,6 +43,7 @@ export default function NavButton({ dir, onClick }: NavButtonProps) {
       className={clsx(
         'cursor-pointer',
         'text-2xl px-3 py-2 rounded-full',
+        isDisabled && 'opacity-50'
       )}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
