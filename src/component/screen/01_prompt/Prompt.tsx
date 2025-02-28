@@ -33,8 +33,9 @@ export default function Prompt({ text, color }: PromptProps) {
       style={{ color: isHovered ? color : 'inherit' }}
       className={clsx(
         'w-full px-4 cursor-pointer',
-        'text-center text-2xl',
-        'transition-colors duration-200'
+        'text-lg text-foreground/80',
+        'md:text-2xl md:text-center',
+        'transition-colors duration-200',
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
