@@ -17,14 +17,15 @@ export default function ReliefScreen() {
       'flex flex-col gap-8',
       'items-center justify-center'
     )}>
-      <span className='text-2xl lowercase'>Phew! Your mug is not empty!</span>
+      <span className='text-2xl lowercase'>Phew! Your mug is now empty!</span>
 
       <div className='w-full flex flex-col gap-4 items-center'>
-        <span className='text-2xl lowercase'>How relieved do you feel?</span>
+        <span className='text-lg md:text-2xl lowercase'>How relieved do you feel?</span>
         <RangeInput />
       </div>
       
       <div className='w-full flex flex-row gap-8 items-center justify-center'>
+        {/* TODO: onclick submit data to chain */}
         <Link href='#' onClick={() => setScreenIndex(0)}>
           <span className='text-base lowercase'>pour another?</span>
         </Link>
